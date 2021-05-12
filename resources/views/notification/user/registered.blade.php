@@ -1,5 +1,5 @@
 *Nuevo registro de Usuario*
 
-*Nombre:* {{ $user->first_name }}
-*Apellidos:* {{ $user->last_name }}
+*Id:* {{ $user->id }}
+*Nombre:* {{ $user->name }}
 *Telefono:* {{ $user->mobile_phone }}

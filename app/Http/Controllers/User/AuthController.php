@@ -5,9 +5,11 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Olympus\App as OlympusApplication;
 use App\Models\User;
+use App\Notifications\User\Register as RegisterNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 // use function PHPUnit\Framework\isNull;
@@ -118,6 +120,7 @@ class AuthController extends Controller
           'api_token' => $user->createToken($olApplication->title)->plainTextToken,
         ];
         $this->API_RESPONSE['STATUS'] = true;
+        Notification::send($user, new RegisterNotification($user));
       } else {
         $this->API_RESPONSE['ERRORS'] = $user->errors;
       }
