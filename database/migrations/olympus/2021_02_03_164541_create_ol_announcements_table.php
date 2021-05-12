@@ -26,9 +26,9 @@ class CreateOlAnnouncementsTable extends Migration
       $table->timestamps();
     });
 
-    Schema::table('ol_announcements', function (Blueprint $table) {
-      $table->foreign('image_id')->references('id')->on('ol_images')->onUpdate('cascade')->onDelete('cascade');
-    });
+    // Schema::table('ol_announcements', function (Blueprint $table) {
+    //   $table->foreign('image_id')->references('id')->on('ol_images')->onUpdate('cascade')->onDelete('cascade');
+    // });
   }
 
   /**
