@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Shop\Image;
+use Database\Seeders\Olympus\AnnouncementSeeder;
 use Database\Seeders\Shop\CategorySeeder;
 use Database\Seeders\Shop\ProductSeeder;
 use Database\Seeders\Olympus\ApplicationSeeder;
@@ -37,7 +38,8 @@ class FakeSeeder extends Seeder
       ApplicationSeeder::class,
       CategorySeeder::class,
       ProductSeeder::class,
-      OrderSeeder::class
+      OrderSeeder::class,
     ]);
+    AnnouncementSeeder::fakeSeed(10, 1);
   }
 }

@@ -151,11 +151,11 @@ class ProductController extends Controller
           $productQry = $productQry->where('category_id', $category->id);
         }
       }
-      // $this->API_RESPONSE['DATA'] = [
-      //   'products' => $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns)),
-      //   'min_price' => 40
-      // ];
-      $this->API_RESPONSE['DATA'] = $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns));
+      $this->API_RESPONSE['DATA'] = [
+        'products' => $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns)),
+        'min_price' => 40
+      ];
+      // $this->API_RESPONSE['DATA'] = $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns));
       $this->API_RESPONSE['STATUS'] = true;
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);

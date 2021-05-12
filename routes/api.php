@@ -105,6 +105,7 @@ Route::get('/min-price', function () {
 });
 
 Route::prefix('/olympus/app')->group(__DIR__ . '/api_routes/olympus_apps.php');
+Route::prefix('/olympus/announcement')->group(__DIR__ . '/api_routes/olympus_announcements.php');
 
 Route::middleware('ol.app')->group(function () {
   Route::prefix('/olympus/notification')->group(__DIR__ . '/api_routes/olympus_notifications.php');

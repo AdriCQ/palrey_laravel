@@ -7,8 +7,9 @@ use App\Models\Olympus\App as OlympusApp;
 use App\Models\Shop\Order;
 use App\Models\Shop\Product;
 use App\Models\User;
-use App\Notifications\CancelOrderNotification;
-use App\Notifications\NewOrderNotification;
+// use App\Notifications\CancelOrderNotification;
+// use App\Notifications\NewOrderNotification;
+use App\Notifications\Shop\Order as ShopOrderNotification;
 // use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -166,7 +167,7 @@ class OrderController extends Controller
         $this->API_STATUS = $this->AVAILABLE_STATUS['CREATED'];
         // Send Notification
         $usersNotifiable = User::first();
-        // Notification::send($usersNotifiable, new NewOrderNotification());
+        Notification::send($usersNotifiable, new ShopOrderNotification($order));
         // Notification::send($usersNotifiable, new NewOrderNotification($order));
       } else {
         $this->API_RESPONSE['ERRORS'] = $order->errors;
