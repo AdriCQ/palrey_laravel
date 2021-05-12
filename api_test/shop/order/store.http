@@ -1,0 +1,25 @@
+POST /api/shop/order HTTP/1.1
+Content-Type: application/json
+Host: {{ host }}
+Accept-Language: es
+Authorization: {{ token }}
+
+{
+  "ol_app_token": "2|$2y$10$7\/Beh.vYZtJUKnZndX0wru\/IjhHIvVx2xF6wqSCnxcx7yHvlbsbN2",
+  "shipping_address": "Calle Silencio #32, Palmira, Cienfuegos",
+  "message": "Some Text",
+  "coordinates": {
+    "lat": 22.2398885,
+    "lng": -80.390417
+  },
+  "products":[
+    {
+      "id": 1,
+      "qty": 5
+    },
+    {
+      "id": 2,
+      "qty": 5
+    }
+  ]
+}

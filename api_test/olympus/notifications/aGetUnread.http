@@ -1,0 +1,9 @@
+GET /olympus/notification/a-unread HTTP/1.1
+Content-Type: application/json
+Host: {{ host }}
+Accept-Language: es
+Authorization: {{ token }}
+
+{
+  "ol_app_token": "2|$2y$10$7\/Beh.vYZtJUKnZndX0wru\/IjhHIvVx2xF6wqSCnxcx7yHvlbsbN2"
+}
