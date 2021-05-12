@@ -151,9 +151,18 @@ class ProductController extends Controller
           $productQry = $productQry->where('category_id', $category->id);
         }
       }
+      $min_price = 40;
+      $extra_price = 0;
+      if (isset($olympusApp->settings->min_price)) {
+        $min_price = $olympusApp->settings->min_price;
+      }
+      if (isset($olympusApp->settings->extra_price)) {
+        $extra_price = $olympusApp->settings->extra_price;
+      }
       $this->API_RESPONSE['DATA'] = [
         'products' => $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns)),
-        'min_price' => 40
+        'min_price' => $min_price,
+        'extra_price' => $extra_price
       ];
       // $this->API_RESPONSE['DATA'] = $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns));
       $this->API_RESPONSE['STATUS'] = true;

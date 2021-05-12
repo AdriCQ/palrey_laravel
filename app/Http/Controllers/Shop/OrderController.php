@@ -95,6 +95,8 @@ class OrderController extends Controller
       $user = auth()->user();
       $productQty = 0;
       $totalTax = 0;
+      if (isset($olympusApp->settings->extra_price))
+        $totalTax = $olympusApp->settings->extra_price;
       $totalPrice = 0;
       $orderProducts = [];
       foreach ($validator['products'] as $product) {

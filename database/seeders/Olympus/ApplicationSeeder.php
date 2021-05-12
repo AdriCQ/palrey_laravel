@@ -20,6 +20,7 @@ class ApplicationSeeder extends Seeder
         'owner_id' => 1,
         'token' => '1.Olympus_Administrator',
         'version' => 1,
+        'settings' => null,
         'roadmap' => json_encode([]),
         'created_at' => now()->toDateTimeString(),
         'updated_at' => now()->toDateTimeString()
@@ -28,6 +29,10 @@ class ApplicationSeeder extends Seeder
         'title' => 'Palrey Shop',
         'owner_id' => 2,
         'token' => '2.PalreyShop',
+        'settings' => json_encode([
+          'min_price' => 40,
+          'extra_price' => 0
+        ]),
         'version' => 0,
         'roadmap' => json_encode([]),
         'created_at' => now()->toDateTimeString(),

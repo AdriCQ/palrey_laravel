@@ -13,7 +13,7 @@ class App extends Model
   protected $table = 'ol_apps';
   protected $guarded = ['id'];
   protected $hidden = ['token'];
-  protected $casts = ['roadmap' => 'object'];
+  protected $casts = ['roadmap' => 'object', 'settings' => 'object'];
 
   public function generateToken()
   {
@@ -38,6 +38,7 @@ class App extends Model
     }
     return false;
   }
+
   /**
    * Check app updates
    */

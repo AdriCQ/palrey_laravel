@@ -8,5 +8,6 @@ Route::namespace('App\Http\Controllers\Olympus')->group(function () {
 
   Route::middleware(['auth:sanctum', 'ol.auth.admin'])->group(function () {
     Route::get('/', 'AppController@getInfo');
+    Route::post('/settings', 'AppController@setSettings');
   });
 });

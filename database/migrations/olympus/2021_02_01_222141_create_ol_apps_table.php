@@ -22,6 +22,7 @@ class CreateOlAppsTable extends Migration
       $table->unsignedSmallInteger('min_required_version')->default(1);
       $table->boolean('update_required')->default(false);
       $table->json('roadmap');
+      $table->json('settings')->nullable();
       $table->unsignedBigInteger('daily_visits')->default(0);
       $table->timestamps();
     });

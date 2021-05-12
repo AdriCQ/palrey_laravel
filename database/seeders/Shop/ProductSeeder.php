@@ -255,7 +255,7 @@ class ProductSeeder extends Seeder
           'stock_status' => $faker->randomElement(Product::$STOCK_STATUS),
           'weight' => $faker->numberBetween(1, 1000),
           'dimensions' => $faker->numberBetween(1, 100) . '|' . $faker->numberBetween(1, 100) . '|' . $faker->numberBetween(1, 100),
-          'tax' => $faker->randomFloat(2, 1, 1000),
+          // 'tax' => $faker->randomFloat(2, 1, 1000),
           'attributes' => json_encode([
             'colors' => [$faker->colorName, $faker->colorName]
           ]),

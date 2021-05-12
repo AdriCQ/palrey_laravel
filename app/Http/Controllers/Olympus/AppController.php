@@ -109,4 +109,36 @@ class AppController extends Controller
     }
     return view('welcome');
   }
+
+  /**
+   * Set Settings
+   * @param Request request
+   * @return Illuminate\Http\JsonResponse
+   */
+  public function setSettings(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'ol_app_token' => ['required', 'string'],
+      'min_price' => ['required', 'numeric'],
+      'extra_price' => ['required', 'numeric']
+    ]);
+    if ($validator->fails()) {
+      $this->API_RESPONSE['ERRORS'] = $validator->errors();
+      $this->API_STATUS = $this->AVAILABLE_STATUS['BAD_REQUEST'];
+    } else {
+      $validator = $validator->validate();
+      $app = OlympusApplication::getByToken($validator['ol_app_token']);
+      $app->settings = [
+        'min_price' => $validator['min_price'],
+        'extra_price' => $validator['extra_price'],
+      ];
+      if ($app->save()) {
+        $this->API_RESPONSE['STATUS'] = true;
+        $this->API_RESPONSE['DATA'] = $app;
+      } else {
+        $this->API_RESPONSE['ERRORS'] = $app->errors;
+      }
+    }
+    return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
+  }
 }
