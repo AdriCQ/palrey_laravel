@@ -2,8 +2,8 @@
   "rest-client.environmentVariables": {
     "$shared": {
       "version": "v1",
-      "prodToken": "Bearer 99|diE91zU03tJKiVicXSMnt4M5gwBPcPu7vq4zBwNP",
-      "nonProdToken": "Bearer 3|U8pc8le7Xi7oLcE3JORNZZeiJw0wAdSk4WWqOktx"
+      "prodToken": "Bearer 2|vrfTiiG0SEPfyyOSJChp2fXL8Yti4znSAESOF9mh",
+      "nonProdToken": "Bearer 1|ZvbKdd2YybjlOdDQXKh3i4DvLVPJuVEZrnq9OY8b"
     },
     "local": {
       "version": "v2",
@@ -12,7 +12,7 @@
       "secretKey": "devSecret"
     },
     "production": {
-      "host": "olympus-server-laravel.herokuapp.com",
+      "host": "palrey.nat.cu",
       "token": "{{$shared prodToken}}",
       "secretKey": "prodSecret"
     }
