@@ -22,6 +22,18 @@ class AnnouncementController extends Controller
   }
 
   /**
+   * Get Announcements
+   * @param Request request
+   * @return Illuminate\Http\JsonResponse
+   */
+  public function vList(Request $request)
+  {
+    $this->API_RESPONSE['DATA'] = Announcement::query()->orderBy('updated_at', 'desc')->get();
+    $this->API_RESPONSE['STATUS'] = true;
+    return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
+  }
+
+  /**
    * Create
    * @param Request request
    * @return Illuminate\Http\JsonResponse
