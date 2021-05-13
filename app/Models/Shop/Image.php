@@ -5,6 +5,7 @@ namespace App\Models\Shop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\Facades\Image as ImageIntervention;
 
 class Image extends Model
@@ -78,10 +79,14 @@ class Image extends Model
         $pathCpy = $storage_path  . '/' . $resizeName;
         $paths[$sizes[$i]] = $public_path . '/' . $resizeName;
         Storage::put($pathCpy, '');
-        $imageFile = ImageIntervention::make($image)
-          ->resize($resizeDimension, null, function ($constraints) {
-            $constraints->aspectRatio();
-          })->save(storage_path('/app' . $pathCpy));
+        try {
+          $imageFile = ImageIntervention::make($image)
+            ->resize($resizeDimension, null, function ($constraints) {
+              $constraints->aspectRatio();
+            })->save(storage_path('/app' . $pathCpy));
+        } catch (NotReadableException $e) {
+          echo json_encode($e);
+        }
       }
     }
     $this->paths = $paths;
