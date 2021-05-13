@@ -31,7 +31,7 @@ class AnnouncementController extends Controller
     $validator = Validator::make($request->all(), [
       'type' => ['required', 'in:' . implode(',', Announcement::$TYPES)],
       'title' => ['required', 'string'],
-      'link' => ['required', 'string'],
+      'link' => ['nullable', 'string'],
       'text' => ['nullable', 'string'],
       'html' => ['nullable', 'string'],
       'icon' => ['nullable', 'string'],
@@ -63,6 +63,82 @@ class AnnouncementController extends Controller
       } else {
         $this->API_STATUS = 503;
         $this->API_RESPONSE = $model->errors;
+      }
+    }
+    return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
+  }
+
+  /**
+   * Update
+   * @param Request request
+   * @return Illuminate\Http\JsonResponse
+   */
+  public function update(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'announcement_id' => ['required', 'integer'],
+      'type' => ['nullable', 'in:' . implode(',', Announcement::$TYPES)],
+      'title' => ['nullable', 'string'],
+      'link' => ['nullable', 'string'],
+      'text' => ['nullable', 'string'],
+      'html' => ['nullable', 'string'],
+      'icon' => ['nullable', 'string'],
+      'active' => ['nullable', 'boolean']
+      // 'image' => ['nullable', 'image']
+    ]);
+    if ($validator->fails()) {
+      $this->API_RESPONSE['ERRORS'] = $validator->errors();
+      $this->API_STATUS = $this->AVAILABLE_STATUS['BAD_REQUEST'];
+    } else {
+      $validator = $validator->validate();
+      $model = Announcement::query()->find($validator['announcement_id']);
+      if ($model) {
+        if (isset($validator['type']))
+          $model->type = $validator['type'];
+        if (isset($validator['title']))
+          $model->title = $validator['title'];
+        if (isset($validator['link']))
+          $model->link = $validator['link'];
+        if (isset($validator['text']))
+          $model->text = $validator['text'];
+        if (isset($validator['html']))
+          $model->html = $validator['html'];
+        if (isset($validator['icon']))
+          $model->icon = $validator['icon'];
+        if (isset($validator['active']))
+          $model->active = $validator['active'];
+        if ($model->save()) {
+          $this->API_RESPONSE['STATUS'] = true;
+          $this->API_RESPONSE['DATA'] = $model;
+        } else {
+          $this->API_STATUS = 503;
+          $this->API_RESPONSE['ERRORS'] = $model->errors;
+        }
+      } else {
+        $this->API_RESPONSE['ERRORS'] = ['No existe'];
+      }
+    }
+    return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
+  }
+
+  /**
+   * Remove
+   * @param Request request
+   * @return Illuminate\Http\JsonResponse
+   */
+  public function remove(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'announcement_id' => ['required', 'integer']
+    ]);
+    if ($validator->fails()) {
+      $this->API_RESPONSE['ERRORS'] = $validator->errors();
+      $this->API_STATUS = $this->AVAILABLE_STATUS['BAD_REQUEST'];
+    } else {
+      $validator = $validator->validate();
+      $model = Announcement::query()->find($validator['announcement_id']);
+      if ($model && $model->delete()) {
+        $this->API_RESPONSE['STATUS'] = true;
       }
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);

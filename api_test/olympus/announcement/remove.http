@@ -1,0 +1,9 @@
+GET /api/olympus/announcement/remove HTTP/1.1
+Content-Type: application/json
+Host: {{ host }}
+Accept-Language: es
+Authorization: {{ token }}
+
+{
+  "announcement_id": 1
+}

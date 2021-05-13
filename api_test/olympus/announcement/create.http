@@ -1,0 +1,14 @@
+POST /api/olympus/announcement HTTP/1.1
+Content-Type: application/json
+Host: {{ host }}
+Accept-Language: es
+Authorization: {{ token }}
+
+{
+  "type": "info",
+  "title": "Title",
+  "link": null,
+  "text": "Some Text",
+  "icon": null,
+  "html": null
+}

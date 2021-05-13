@@ -17,8 +17,8 @@ class CreateOlAnnouncementsTable extends Migration
       $table->id();
       $table->boolean('active')->default(false);
       $table->string('type', 64);
-      $table->string('title');
-      $table->string('link');
+      $table->string('title')->nullable();
+      $table->string('link')->nullable();
       $table->longText('html')->nullable();
       $table->text('text')->nullable();
       $table->string('icon', 64)->nullable();

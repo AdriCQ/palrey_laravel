@@ -11,5 +11,5 @@ class Announcement extends Model
   protected $table = 'ol_announcements';
   protected $guarded = ['id'];
 
-  public static $TYPES = [''];
+  public static $TYPES = ['info'];
 }
