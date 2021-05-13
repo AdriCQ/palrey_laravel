@@ -85,7 +85,7 @@ class Image extends Model
               $constraints->aspectRatio();
             })->save(storage_path('/app' . $pathCpy));
         } catch (NotReadableException $e) {
-          echo json_encode($e);
+          Storage::put('image_error.' . json_encode($e));
         }
       }
     }
