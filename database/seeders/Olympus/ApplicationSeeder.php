@@ -31,7 +31,8 @@ class ApplicationSeeder extends Seeder
         'token' => '2.PalreyShop',
         'settings' => json_encode([
           'min_price' => 40,
-          'extra_price' => 0
+          'extra_price' => 0,
+          'enable'=>true
         ]),
         'version' => 0,
         'roadmap' => json_encode([]),
