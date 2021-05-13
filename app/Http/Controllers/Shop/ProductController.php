@@ -162,7 +162,8 @@ class ProductController extends Controller
       $this->API_RESPONSE['DATA'] = [
         'products' => $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns)),
         'min_price' => $min_price,
-        'extra_price' => $extra_price
+        'extra_price' => $extra_price,
+        'enable' => isset($olympusApp->settings->enable)?$olympusApp->settings->enable:false
       ];
       // $this->API_RESPONSE['DATA'] = $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns));
       $this->API_RESPONSE['STATUS'] = true;
