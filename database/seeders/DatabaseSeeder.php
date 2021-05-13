@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Shop\Image;
+use Database\Seeders\Olympus\AnnouncementSeeder;
 use Database\Seeders\Shop\CategorySeeder;
 use Database\Seeders\Shop\ProductSeeder;
 use Database\Seeders\Olympus\ApplicationSeeder;
@@ -45,5 +46,6 @@ class DatabaseSeeder extends Seeder
     UserSeeder::realSeed();
     ApplicationSeeder::realSeed();
     ProductSeeder::realSeed();
+    AnnouncementSeeder::realSeed();
   }
 }

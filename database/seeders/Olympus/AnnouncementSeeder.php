@@ -19,6 +19,25 @@ class AnnouncementSeeder extends Seeder
   {
   }
 
+  public static function realSeed()
+  {
+    $faker = Factory::create();
+    $ann = [];
+    for ($l = 0; $l < 12; $l++) {
+      array_push($ann, [
+        'active' => false,
+        'title' => $faker->words(3, true),
+        'type' => $faker->randomElement(Announcement::$TYPES),
+        'text' => $faker->text,
+        'icon' => $faker->randomElement(['mdi-cart', null]),
+        // 'image_id' => 1,
+        'created_at' => now()->toDateTimeString(),
+        'updated_at' => now()->toDateTimeString(),
+      ]);
+    }
+    Announcement::query()->insert($ann);
+  }
+
   public static function fakeSeed(int $limit = 10, int $repeat = 1)
   {
     $faker = Factory::create();
