@@ -120,7 +120,8 @@ class AppController extends Controller
     $validator = Validator::make($request->all(), [
       'ol_app_token' => ['required', 'string'],
       'min_price' => ['required', 'numeric'],
-      'extra_price' => ['required', 'numeric']
+      'extra_price' => ['required', 'numeric'],
+      'enable' => ['required', 'boolean']
     ]);
     if ($validator->fails()) {
       $this->API_RESPONSE['ERRORS'] = $validator->errors();
@@ -131,6 +132,7 @@ class AppController extends Controller
       $app->settings = [
         'min_price' => $validator['min_price'],
         'extra_price' => $validator['extra_price'],
+        'enable' => $validator['enable']
       ];
       if ($app->save()) {
         $this->API_RESPONSE['STATUS'] = true;
