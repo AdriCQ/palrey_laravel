@@ -63,7 +63,7 @@ class UserSeeder extends Seeder
     $dcq->assignRole('Developer');
 
     $admins = [
-      [
+      /*[
         'name' => 'David H. Palmero Reyes',
         // 'last_name' => 'Pal',
         'mobile_phone' => '58075153',
@@ -75,7 +75,7 @@ class UserSeeder extends Seeder
         'mobile_phone' => '53284237',
         'password' => Hash::make('Valeria1997'),
         'address' => ''
-      ], [
+      ],*/ [
         'name' => 'Liz Manso Gutiérrez',
         // 'last_name' => 'Pal',
         'mobile_phone' => '55190107',
