@@ -21,15 +21,13 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
     Image::query()->insert([
-      'title' => 'Olympus Logo',
+      'title' => 'Default Image',
       'paths' => json_encode([
-        'xs' => '',
-        'sm' => '',
-        'md' => '',
-        'lg' => '',
-        'xl' => '',
+        'sm' => '/img/default.jpg',
+        'md' => '/img/default.jpg',
+        'lg' => '/img/default.jpg',
       ]),
-      'tags' => json_encode(['olympus'])
+      'tags' => json_encode(['default'])
     ]);
     $this->call([
       PermissionSeeder::class
