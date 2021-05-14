@@ -25,7 +25,7 @@ class Order extends Model
         $product->stock_status = 'limited';
       if ($product->stock_status === 'limited') {
         $product->stock_qty += $orderProduct->product_qty;
-        $product->sold -= $orderProduct->product_qty;
+//        $product->sold -= $orderProduct->product_qty;
         if (!$product->save())
           return false;
       }
