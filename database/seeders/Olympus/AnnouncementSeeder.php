@@ -51,7 +51,7 @@ class AnnouncementSeeder extends Seeder
           'link' => $faker->word(),
           'text' => $faker->text,
           'icon' => $faker->randomElement(['mdi-cart', null]),
-          // 'image_id' => 1,
+          'image_id' => 1,
           'created_at' => now()->toDateTimeString(),
           'updated_at' => now()->toDateTimeString(),
         ]);

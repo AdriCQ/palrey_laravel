@@ -22,13 +22,13 @@ class CreateOlAnnouncementsTable extends Migration
       $table->longText('html')->nullable();
       $table->text('text')->nullable();
       $table->string('icon', 64)->nullable();
-      // $table->unsignedBigInteger('image_id')->nullable();
+      $table->unsignedBigInteger('image_id')->nullable();
       $table->timestamps();
     });
 
-    // Schema::table('ol_announcements', function (Blueprint $table) {
-    //   $table->foreign('image_id')->references('id')->on('ol_images')->onUpdate('cascade')->onDelete('cascade');
-    // });
+    Schema::table('ol_announcements', function (Blueprint $table) {
+      $table->foreign('image_id')->references('id')->on('shop_images')->onUpdate('cascade')->onDelete('cascade');
+    });
   }
 
   /**
