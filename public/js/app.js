@@ -1,4 +1,3 @@
-/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@inertiajs/inertia-vue3/dist/index.js":
