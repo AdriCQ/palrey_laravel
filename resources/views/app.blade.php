@@ -8,15 +8,20 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- Fonts -->
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> -->
+  {{-- Bootstrap --}}
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  {{-- Font-Awesome --}}
+  <!-- <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css"> -->
 
   <!-- Styles -->
-  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+  <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
 
   <!-- Scripts -->
   @routes
   <script src="{{ mix('js/app.js') }}" defer></script>
+  <script src="vendor/jquery/jquery.min.js" defer></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js" defer></script>
 </head>
 
 <body class="font-sans antialiased">
