@@ -36,7 +36,7 @@ class OrderController extends Controller
       if (isset($validator['status'])) {
         $orders = $orders->where('status', $validator['status']);
       }
-      $this->API_RESPONSE['DATA'] = $orders->orderBy('updated_at', 'desc')->simplePaginate(12);
+      $this->API_RESPONSE['DATA'] = $orders->orderBy('updated_at', 'desc')->simplePaginate(24);
       $this->API_RESPONSE['STATUS'] = true;
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
@@ -410,7 +410,7 @@ class OrderController extends Controller
         ]
       );
       $qry = $qry->orderBy('updated_at', 'desc');
-      $this->API_RESPONSE['DATA'] = $qry->simplePaginate(12);
+      $this->API_RESPONSE['DATA'] = $qry->simplePaginate(24);
       $this->API_RESPONSE['STATUS'] = true;
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);

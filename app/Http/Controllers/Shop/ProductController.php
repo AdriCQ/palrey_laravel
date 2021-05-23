@@ -160,10 +160,10 @@ class ProductController extends Controller
         $extra_price = $olympusApp->settings->extra_price;
       }
       $this->API_RESPONSE['DATA'] = [
-        'products' => $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns)),
+        'products' => $productQry->orderBy('updated_at', 'desc')->simplePaginate(24, Product::tableFields($extraModelColumns)),
         'min_price' => $min_price,
         'extra_price' => $extra_price,
-        'enable' => isset($olympusApp->settings->enable)?$olympusApp->settings->enable:false
+        'enable' => isset($olympusApp->settings->enable) ? $olympusApp->settings->enable : false
       ];
       // $this->API_RESPONSE['DATA'] = $productQry->orderBy('updated_at', 'desc')->simplePaginate(12, Product::tableFields($extraModelColumns));
       $this->API_RESPONSE['STATUS'] = true;
@@ -240,7 +240,7 @@ class ProductController extends Controller
           $productQry = $productQry->where('category_id', $category->id);
         }
       }
-      $this->API_RESPONSE['DATA'] = $productQry->simplePaginate(12, Product::tableFields());
+      $this->API_RESPONSE['DATA'] = $productQry->simplePaginate(24, Product::tableFields());
       $this->API_RESPONSE['STATUS'] = true;
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
@@ -350,7 +350,7 @@ class ProductController extends Controller
       }
       if (isset($validator['orderBy']))
         $productQry = $productQry->orderBy($validator['orderBy'], 'desc');
-      $this->API_RESPONSE['DATA'] = $productQry->simplePaginate(12, Product::tableFields(['sold', 'onsale']));
+      $this->API_RESPONSE['DATA'] = $productQry->simplePaginate(24, Product::tableFields(['sold', 'onsale']));
       $this->API_RESPONSE['STATUS'] = true;
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
