@@ -43,7 +43,7 @@ Route::get('/stats', function (Request $request) {
       $totalMoney += $order->total_price + $order->tax;
       $totalProducts += $order->total_products;
       foreach ($order->products as $orderProduct) {
-        $inversion += $orderProduct->product->production_price * $order->total_products;
+        $inversion += $orderProduct->product->production_price * $orderProduct->product_qty;
         if (!isset($cantProduct[$orderProduct->product->title]))
           $cantProduct[$orderProduct->product->title] = 0;
         $cantProduct[$orderProduct->product->title] += $orderProduct->product_qty;
