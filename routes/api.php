@@ -1,9 +1,6 @@
 <?php
 
-use App\Models\Shop\Image;
 use App\Models\Shop\Order;
-use App\Models\Shop\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -46,13 +43,13 @@ Route::get('/stats', function (Request $request) {
       $totalMoney += $order->total_price + $order->tax;
       $totalProducts += $order->total_products;
       foreach ($order->products as $orderProduct) {
+        $inversion += $orderProduct->product->production_price;
         if (!isset($cantProduct[$orderProduct->product->title]))
           $cantProduct[$orderProduct->product->title] = 0;
         $cantProduct[$orderProduct->product->title] += $orderProduct->product_qty;
         if (!isset($moneyProduct[$orderProduct->product->title]))
           $moneyProduct[$orderProduct->product->title] = 0;
         $moneyProduct[$orderProduct->product->title] += $orderProduct->product_qty * $orderProduct->product->sell_price;
-        $inversion += $orderProduct->product->production_price;
       }
     }
     return response()->json([
