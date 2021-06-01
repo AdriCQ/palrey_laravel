@@ -15,7 +15,7 @@ class OrderProduct extends Model
     'product_details' => 'object'
   ];
 
-  protected $with = ['product:id,title,sell_price,wholesale_price,image_id,stock_status,stock_qty'];
+  protected $with = ['product:id,title,sell_price,production_price,wholesale_price,image_id,stock_status,stock_qty'];
 
   /**
    * 
