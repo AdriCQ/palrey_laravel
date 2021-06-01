@@ -40,25 +40,29 @@ Route::get('/stats', function (Request $request) {
     $totalMoney = 0;
     $cantProduct = [];
     $moneyProduct = [];
+    $inversion = 0;
     $cantPedidos = $orders->count();
     foreach ($orders->get() as $order) {
+      $totalMoney += $order->total_price + $order->tax;
       $totalProducts += $order->total_products;
       foreach ($order->products as $orderProduct) {
-        $totalMoney += $orderProduct->product_qty * $orderProduct->product->sell_price;
         if (!isset($cantProduct[$orderProduct->product->title]))
           $cantProduct[$orderProduct->product->title] = 0;
         $cantProduct[$orderProduct->product->title] += $orderProduct->product_qty;
         if (!isset($moneyProduct[$orderProduct->product->title]))
           $moneyProduct[$orderProduct->product->title] = 0;
         $moneyProduct[$orderProduct->product->title] += $orderProduct->product_qty * $orderProduct->product->sell_price;
+        $inversion += $orderProduct->product->production_price;
       }
     }
     return response()->json([
       'total_money' => $totalMoney,
+      'inversion' => $inversion,
+      'earn' => $totalMoney - $inversion,
       'total_products' => $totalProducts,
       'cant_products' => $cantProduct,
       'money_product' => $moneyProduct,
-      'cant_pedidos' => $cantPedidos
+      'cant_pedidos' => $cantPedidos,
     ]);
   }
 });
