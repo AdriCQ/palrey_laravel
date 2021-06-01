@@ -6,7 +6,7 @@
 
       <div class="mt-3">
         <a
-          :href="`${url}/olympus/app/download?ol_app_token=${appToken}`"
+          :href="`${url}/storage/PalReyClient-v1.0.5.apk`"
           class="btn btn-outline-primary mx-1 my-1"
         >
           <!-- <i class="fa fa-fw fa-android" /> -->
