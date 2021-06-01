@@ -350,7 +350,7 @@ class ProductController extends Controller
       }
       if (isset($validator['orderBy']))
         $productQry = $productQry->orderBy($validator['orderBy'], 'desc');
-      $this->API_RESPONSE['DATA'] = $productQry->simplePaginate(24, Product::tableFields(['sold', 'onsale']));
+      $this->API_RESPONSE['DATA'] = $productQry->orderBy('updated_at', 'desc')->simplePaginate(24, Product::tableFields(['sold', 'onsale']));
       $this->API_RESPONSE['STATUS'] = true;
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
