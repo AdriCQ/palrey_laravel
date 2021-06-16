@@ -53,6 +53,10 @@ class Image extends Model
         $storage_path .= '/vendor';
         $public_path .= '/vendor';
         break;
+      case 'announcement':
+        $storage_path .= '/announcement';
+        $public_path .= '/announcement';
+        break;
       default:
         $storage_path .= '/';
         $public_path .= '/';

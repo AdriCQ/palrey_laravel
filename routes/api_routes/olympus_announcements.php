@@ -9,5 +9,6 @@ Route::namespace('App\Http\Controllers\Olympus')->group(function () {
     Route::get('/v-list', 'AnnouncementController@vList');
     Route::post('/update', 'AnnouncementController@update');
     Route::get('/remove', 'AnnouncementController@remove');
+    Route::post('/image', 'AnnouncementController@uploadImage');
   });
 });

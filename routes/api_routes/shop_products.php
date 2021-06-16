@@ -37,6 +37,6 @@ Route::namespace('App\Http\Controllers\Shop')->group(function () {
           'updated_at' => now()->toDateTimeString()
         ],
       );
-    })->middleware('ol.auth.developer');
+    })->middleware('ol.auth.admin');
   });
 });
