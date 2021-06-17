@@ -17,7 +17,7 @@ class AnnouncementController extends Controller
    */
   public function list(Request $request)
   {
-    $this->API_RESPONSE['DATA'] = Announcement::query()->where('active', true)->orderBy('updated_at', 'desc')->get();
+    $this->API_RESPONSE['DATA'] = Announcement::query()->where('active', true)->with('image')->orderBy('updated_at', 'desc')->get();
     $this->API_RESPONSE['STATUS'] = true;
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
   }
@@ -29,7 +29,7 @@ class AnnouncementController extends Controller
    */
   public function vList(Request $request)
   {
-    $this->API_RESPONSE['DATA'] = Announcement::query()->orderBy('updated_at', 'desc')->get();
+    $this->API_RESPONSE['DATA'] = Announcement::query()->with('image')->orderBy('updated_at', 'desc')->get();
     $this->API_RESPONSE['STATUS'] = true;
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
   }
