@@ -62,7 +62,7 @@ class Image extends Model
         $public_path .= '/';
     }
     $paths = [];
-    $resizeDimension = 150;
+    $resizeDimension = 480;
     for ($i = 0; $i < count($sizes); $i++) {
       $resizeName = $filename;
       switch ($sizes[$i]) {
@@ -71,12 +71,12 @@ class Image extends Model
           break;
         case 'md':
           $resizeName = 'md_' . $resizeName;
-          $resizeDimension = 320;
+          $resizeDimension = 640;
 
           break;
         case 'lg':
           $resizeName = 'lg_' . $resizeName;
-          $resizeDimension = 480;
+          $resizeDimension = 980;
           break;
       }
       if ($resizeName !== $filename) {
