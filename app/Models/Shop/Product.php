@@ -26,6 +26,8 @@ class Product extends Model
 
   public static $STOCK_STATUS = ['limited', 'infinity', 'backorder', 'sold_out'];
 
+  public static $PAGINATE = 64;
+
   /**
    * 
    */
