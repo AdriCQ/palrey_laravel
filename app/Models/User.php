@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Olympus\Comment;
 use App\Models\Shop\Order;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,6 +54,11 @@ class User extends Authenticatable
    *	Relations
    * -----------------------------------------
    */
+
+  public function comments()
+  {
+    return $this->hasMany(Comment::class, 'user_id', 'id');
+  }
 
   /**
    * 

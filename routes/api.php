@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Olympus\CommentController;
 use App\Models\Shop\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -64,42 +65,8 @@ Route::get('/stats', function (Request $request) {
   }
 });
 
-Route::get('/test', function () {
-  $response = [];
-  // $image = Image::query()->find(9);
-  // $image->title = 'Montecristo-cover';
-  // $image->paths = [
-  //   "sm" => "/storage/shop/images/product/sm_9.jpg",
-  //   "md" => "/storage/shop/images/product/md_9.jpg",
-  //   "lg" => "/storage/shop/images/product/lg_9.jpg",
-  // ];
-  // if ($image->save()) {
-  //   $response['image'] = $image;
-  //   $product = new Product([
-  //     'title' => 'Montecristo',
-  //     'description' => 'Montecristo',
-  //     'sell_price' => 0,
-  //     'category_id' => 2,
-  //     'owner_id' => 1,
-  //     'image_id' => $image->id,
-  //   ]);
-  //   if ($product->save()) {
-  //     $response['product'] = $product;
-  //   } else {
-  //     $response['error_product'] = $product->errors;
-  //   }
-  // } else {
-  //   $response['error_image'] = $image->errors;
-  // }
-  // $product = Product::query()->find(8);
-  // $product->image_id = 10;
-  // if ($product->save())
-  //   $response = $product;
-  // else
-  //   $response = $product->errors;
-
-  return response()->json($response);
-});
+Route::post('/comment', [CommentController::class, 'create'])
+  ->middleware('auth:sanctum');
 
 Route::get('/min-price', function () {
   return response()->json(['DATA' => 40, 'STATUS' => true, 'ERRORS' => null]);
