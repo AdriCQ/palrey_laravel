@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
    */
   private function setDbPaths()
   {
-    $MODULES = ['laravel', 'olympus', 'shop', 'shop/pivot', 'users'];
+    $MODULES = ['laravel', 'olympus', 'shop', 'shop/part', 'shop/pivot', 'users'];
     $MIGRATIONS_FOLDER = [];
     for ($i = 0; $i < count($MODULES); $i++) {
       $MIGRATIONS_FOLDER[$i] = 'database/migrations/' . $MODULES[$i];

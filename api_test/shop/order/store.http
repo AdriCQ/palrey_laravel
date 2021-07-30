@@ -8,6 +8,7 @@ Authorization: {{ token }}
   "ol_app_token": "2|$2y$10$7\/Beh.vYZtJUKnZndX0wru\/IjhHIvVx2xF6wqSCnxcx7yHvlbsbN2",
   "shipping_address": "Calle Silencio #32, Palmira, Cienfuegos",
   "message": "Some Text",
+  "request_time": "2021-07-31 18:30",
   "coordinates": {
     "lat": 22.2398885,
     "lng": -80.390417

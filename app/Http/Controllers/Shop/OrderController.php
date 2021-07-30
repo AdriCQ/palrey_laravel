@@ -85,6 +85,7 @@ class OrderController extends Controller
       'products.*.id' => ['required', 'integer'],
       'products.*.qty' => ['required', 'integer'],
       'products.*.product_details' => ['nullable', 'array'],
+      'request_time' => ['nullable', 'date']
     ]);
     if ($validator->fails()) {
       $this->API_RESPONSE['ERRORS'] = $validator->errors();
@@ -140,15 +141,17 @@ class OrderController extends Controller
           return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
         }
       }
+
       $orderData = [
         'app_id' => $olympusApp->id,
         'customer_id' => $user->id,
         'tax' => $totalTax,
         'total_price' => $totalPrice,
         'shipping_address' => $validator['shipping_address'],
-        'message' => $validator['message'],
+        'message' => isset($validator['message']) ? $validator['message'] : null,
         // 'coordinates' => $validator['coordinates'],
         'total_products' => $productQty,
+        'request_time' => isset($validator['request_time']) ? $validator['request_time'] : null
       ];
       if (isset($validator['coordinates'])) {
         $orderData['coordinates'] = $validator['coordinates'];
