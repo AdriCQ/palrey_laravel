@@ -1,0 +1,5 @@
+GET /api/comment HTTP/1.1
+Content-Type: application/json
+Host: {{ host }}
+Accept-Language: es
+Authorization: {{ token }}

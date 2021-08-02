@@ -65,8 +65,8 @@ Route::get('/stats', function (Request $request) {
   }
 });
 
-Route::post('/comment', [CommentController::class, 'create'])
-  ->middleware('auth:sanctum');
+Route::post('/comment', [CommentController::class, 'create'])->middleware('auth:sanctum');
+Route::get('/comment', [CommentController::class, 'list'])->middleware(['auth:sanctum', 'ol.auth.admin']);
 
 Route::get('/min-price', function () {
   return response()->json(['DATA' => 40, 'STATUS' => true, 'ERRORS' => null]);

@@ -47,4 +47,14 @@ class CommentController extends Controller
     }
     return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
   }
+  /**
+   * list
+   * @param Request request
+   * @return Illuminate\Http\JsonResponse
+   */
+  public function list(Request $request)
+  {
+    $this->API_RESPONSE = Comment::query()->with('user')->orderBy('created_at', 'desc')->get();
+    return response()->json($this->API_RESPONSE, $this->API_STATUS, [], JSON_NUMERIC_CHECK);
+  }
 }
