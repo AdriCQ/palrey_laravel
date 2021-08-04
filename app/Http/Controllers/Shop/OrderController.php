@@ -466,8 +466,8 @@ class OrderController extends Controller
         if ($validator['status'] === 'accepted') {
           if (isset($validator['delivery_time'])) {
             // TODO: Check TIme
-            $order->delivery_time = Carbon::createFromDate($validator['delivery_time']);
-            // $order->delivery_time = Carbon::createFromDate($validator['delivery_time'])->subHours(4);
+            // $order->delivery_time = Carbon::createFromDate($validator['delivery_time']);
+            $order->delivery_time = Carbon::createFromDate($validator['delivery_time'])->subHours(4);
           } else {
             $order->delivery_time = now()->addHour();
           }
