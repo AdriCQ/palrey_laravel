@@ -120,7 +120,7 @@ class AuthController extends Controller
           'api_token' => $user->createToken($olApplication->title)->plainTextToken,
         ];
         $this->API_RESPONSE['STATUS'] = true;
-        Notification::send($user, new RegisterNotification($user));
+        // Notification::send($user, new RegisterNotification($user));
       } else {
         $this->API_RESPONSE['ERRORS'] = $user->errors;
       }
