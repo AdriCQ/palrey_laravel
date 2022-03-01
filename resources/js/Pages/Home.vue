@@ -6,7 +6,7 @@
 
       <div class="mt-3">
         <a
-          :href="`${url}/storage/PalReyClient-v1.0.5.apk`"
+          :href="`${url}/storage/Palrey.apk`"
           class="btn btn-outline-primary mx-1 my-1"
         >
           <!-- <i class="fa fa-fw fa-android" /> -->
