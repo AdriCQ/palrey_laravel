@@ -83,6 +83,8 @@ class Image extends Model
       if ($resizeName !== $filename) {
         $pathCpy = $storage_path  . '/' . $resizeName;
         $paths[$sizes[$i]] = $public_path . '/' . $resizeName;
+        if(Storage::exists($pathCpy))
+          Storage::delete($pathCpy);
         Storage::put($pathCpy, '');
         try {
           $imageFile = ImageIntervention::make($image)
