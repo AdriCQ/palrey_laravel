@@ -410,7 +410,7 @@ class ProductController extends Controller
       if ($product) {
         $imageCoverFile = $validator['image'];
         $imageCoverModel = new Image();
-        $imageCoverModel->uploadImage($imageCoverFile, 'product');
+        $imageCoverModel->uploadImage($imageCoverFile, 'product', $product->id);
         $imageCoverModel->tags = $product->tags;
         $imageCoverModel->title = $product['title'] . '-cover';
         if ($imageCoverModel->save()) {

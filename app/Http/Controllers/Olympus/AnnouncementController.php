@@ -156,7 +156,7 @@ class AnnouncementController extends Controller
       if ($model) {
         $imageCoverFile = $validator['image'];
         $imageCoverModel = new Image();
-        $imageCoverModel->uploadImage($imageCoverFile, 'announcement');
+        $imageCoverModel->uploadImage($imageCoverFile, 'announcement', $model->id);
         $imageCoverModel->tags = ['announcement'];
         $imageCoverModel->title = 'Announcement-' . $model->id;
         if ($imageCoverModel->save()) {
