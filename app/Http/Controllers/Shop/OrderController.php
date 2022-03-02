@@ -154,7 +154,8 @@ class OrderController extends Controller
         // 'coordinates' => $validator['coordinates'],
         'total_products' => $productQty,
         'request_time' => isset($validator['request_time']) 
-        ?  Carbon::parse($validator['request_time'])->subHour()
+        // ?  Carbon::parse($validator['request_time'])->subHour()
+	? $validator['request_time']
         : null
       ];
       if (isset($validator['coordinates'])) {
@@ -471,7 +472,7 @@ class OrderController extends Controller
           if (isset($validator['delivery_time'])) {
             // TODO: Check TIme
             // $order->delivery_time = Carbon::createFromDate($validator['delivery_time']);
-            $order->delivery_time = Carbon::createFromDate($validator['delivery_time'])->subHours(4);
+            $order->delivery_time = Carbon::parse($validator['delivery_time'])->subHours(5);
           } else {
             $order->delivery_time = now()->addHour();
           }
