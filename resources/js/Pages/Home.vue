@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     url() {
-      return "https://palrey.nat.cu";
+      return "https://palrey-laravel.nairda.net";
     },
     appToken() {
       return "2|$2y$10$xhx.eDmAyd.NuMsTHkfQYuycp4YC1dxIGHWXN/2RjZvu0AGbHRltu";

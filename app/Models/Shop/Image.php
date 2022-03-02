@@ -41,7 +41,8 @@ class Image extends Model
   public function uploadImage($image, $type = 'product', $sizes = ['sm', 'md', 'lg'])
   {
     // $filename =  sha1($image->getClientOriginalName()) . '_' . sha1(time()) . '.' . $image->getClientOriginalExtension();
-    $filename =  sha1($image->getClientOriginalName()) . '_' . sha1(time()) . '.jpg';
+    // $filename =  sha1($image->getClientOriginalName()) . '_' . sha1(time()) . '.jpg';
+    $filename =  $this->id . '.jpg';
     $storage_path = $this->STORAGE_PATH;
     $public_path = $this->PUBLIC_PATH;
     switch ($type) {

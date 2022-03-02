@@ -12,7 +12,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
-
+/**
+ * OrderController
+ */
 class OrderController extends Controller
 {
 
@@ -151,7 +153,9 @@ class OrderController extends Controller
         'message' => isset($validator['message']) ? $validator['message'] : null,
         // 'coordinates' => $validator['coordinates'],
         'total_products' => $productQty,
-        'request_time' => isset($validator['request_time']) ? $validator['request_time'] : null
+        'request_time' => isset($validator['request_time']) 
+        ?  Carbon::parse($validator['request_time'])->subHour()
+        : null
       ];
       if (isset($validator['coordinates'])) {
         $orderData['coordinates'] = $validator['coordinates'];
