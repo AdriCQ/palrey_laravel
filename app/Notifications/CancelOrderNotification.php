@@ -38,7 +38,7 @@ class CancelOrderNotification extends Notification
   {
     return TelegramMessage::create()
       // Optional recipient user id.
-      ->to((int)env('TELEGRAM_CHAT_ID', '913493292'))
+      ->to((int)env('TELEGRAM_CHAT_ID'))
       // Markdown supported.
       ->content("Se ha cancelado un pedido");
   }
