@@ -32,7 +32,7 @@ class Register extends Notification implements ShouldQueue
   {
     return TelegramMessage::create()
       // Optional recipient user id.
-      ->to(-1001151880402)
+      ->to('913493292')
       // Markdown supported.
       ->view('notification.user.registered', ['user' => $notifiable]);
   }

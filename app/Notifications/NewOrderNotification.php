@@ -38,7 +38,7 @@ class NewOrderNotification extends Notification
   {
     return TelegramMessage::create()
       // Optional recipient user id.
-      ->to(-505113666)
+      ->to('913493292')
       // Markdown supported.
       ->content("Hay un nuevo pedido");
   }

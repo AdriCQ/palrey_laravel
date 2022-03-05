@@ -38,7 +38,7 @@ class Order extends Notification implements ShouldQueue
   {
     return TelegramMessage::create()
       // Optional recipient user id.
-      ->to(-1001151880402)
+      ->to('913493292')
       // ->content('Nueva Orden')
       // Markdown supported.
       ->view('notification.shop.order', ['order' => $this->order]);
