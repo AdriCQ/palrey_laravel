@@ -173,8 +173,8 @@ class OrderController extends Controller
         $this->API_RESPONSE['STATUS'] = true;
         $this->API_STATUS = $this->AVAILABLE_STATUS['CREATED'];
         // Send Notification
-        // $usersNotifiable = User::first();
-        // Notification::send($usersNotifiable, new ShopOrderNotification($order));
+        $usersNotifiable = User::first();
+        Notification::send($usersNotifiable, new ShopOrderNotification($order));
         // Notification::send($usersNotifiable, new NewOrderNotification($order));
       } else {
         $this->API_RESPONSE['ERRORS'] = $order->errors;
