@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->job(new TelegramAnnouncementJob([913493292, -1001151880402]))->everyMinute();
         $schedule->job(new TelegramAnnouncementJob(
             explode(',', env('TELEGRAM_ANNOUNCEMENT_CHAT'))
-        ))->everyThreeHours();
+        ))->everyTwoHours();
     }
 
     /**
