@@ -34,7 +34,7 @@ class TelegramAnnouncementJob implements ShouldQueue
      */
     public function handle()
     {
-        $product = Product::query()->orderBy('sold', 'desc')->first();
+        $product = Product::query()->where('onsale', true)->inRandomOrder()->first();
         Notification::send($this->chats, new AnnouncementTelegram($product));
     }
 }
